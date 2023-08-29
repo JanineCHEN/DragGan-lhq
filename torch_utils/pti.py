@@ -2,7 +2,7 @@ import pickle
 from PTI.utils.ImagesDataset import ImagesDataset, Image2Dataset
 import torch
 from PTI.utils.models_utils import load_old_G
-from PTI.utils.alignment import align_face
+from PTI.utils.align_data import align_data
 
 from PTI.training.coaches.single_id_coach import SingleIDCoach
 from PTI.configs import global_config, paths_config
@@ -37,9 +37,9 @@ def run_PTI(img, run_name):
     #     transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])]))
 
     G = load_old_G()
-    IMAGE_SIZE = 1024
-    predictor = dlib.shape_predictor(paths_config.dlib)
-    aligned_image = align_face(img, predictor=predictor, output_size=IMAGE_SIZE)
+    IMAGE_SIZE = 256
+    # predictor = dlib.shape_predictor(paths_config.dlib)
+    aligned_image = align_data(img, output_size=IMAGE_SIZE)
     img = aligned_image.resize([G.img_resolution, G.img_resolution])
     dataset = Image2Dataset(img)
 
