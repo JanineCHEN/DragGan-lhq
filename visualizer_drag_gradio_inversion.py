@@ -210,11 +210,6 @@ with gr.Blocks(css=css) as app:
 ## Interactive Point-based Manipulation on the Generative Image Manifold
 ### Unofficial Gradio Demo
 
-**Due to high demand, only one model can be run at a time, or you can duplicate the space and run your own copy.**
-
-<a href="https://huggingface.co/spaces/DragGan/DragGan-Inversion?duplicate=true" style="display: inline-block;margin-top: .5em;margin-right: .25em;" target="_blank">
-<img style="margin-bottom: 0em;display: inline;margin-top: -.25em;" src="https://bit.ly/3gLdBN6" alt="Duplicate Space"></a> for no queue on your own hardware.</p>
-
 * Official Repo: [XingangPan](https://github.com/XingangPan/DragGAN)
 * Gradio Demo by: [LeoXing1996](https://github.com/LeoXing1996) © [OpenMMLab MMagic](https://github.com/open-mmlab/mmagic)
 * Inversion Code: [ProgrammingHut](https://www.youtube.com/watch?v=viWiOC1Mikw), [EthanZhangCN](https://github.com/EthanZhangCN) 
@@ -255,7 +250,7 @@ with gr.Blocks(css=css) as app:
             "curr_point": None,
             "curr_type_point": "start",
             "editing_state": "add_points",
-            "pretrained_weight": str(model_dir / "stylegan2-ffhq1024x1024.pkl"),
+            "pretrained_weight": str(model_dir / "stylegan2-lhq-256x256.pkl"),
         }
     )
 
@@ -428,7 +423,7 @@ with gr.Blocks(css=css) as app:
         Path(global_state["pretrained_weight"]).unlink(missing_ok=True)
         global_state["w_pivot"] = None
         global_state["pretrained_weight"] = str(
-            model_dir / "stylegan2-ffhq1024x1024.pkl"
+            model_dir / "stylegan2-lhq-256x256.pkl"
         )
 
         init_images(global_state)
@@ -999,4 +994,4 @@ with gr.Blocks(css=css) as app:
 # print("SHAReD: Start app", parser.parse_args())
 gr.close_all()
 app.queue(concurrency_count=1, max_size=200, api_open=False)
-app.launch(show_api=False)
+app.launch(show_api=False, share=True)
