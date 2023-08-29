@@ -5,22 +5,34 @@ import dlib
 import glob
 import os
 from tqdm import tqdm
-from utils.alignment import align_face
+# from utils.alignment import align_face
 
+def align_data(filepath, output_size):
+    """
+    :param filepath: str
+    :return: PIL Image
+    """
+    # read image
+    img = PIL.Image.open(filepath)
+
+    # Transform.
+    img = img.resize((output_size, output_size), PIL.Image.ANTIALIAS)
+
+    # Return aligned image.
+    return img
 
 def pre_process_images(raw_images_path):
     current_directory = os.getcwd()
 
-    IMAGE_SIZE = 1024
-    predictor = dlib.shape_predictor(paths_config.dlib)
+    IMAGE_SIZE = 256
+    # predictor = dlib.shape_predictor(paths_config.dlib)
     os.chdir(raw_images_path)
     images_names = glob.glob(f'*')
 
     aligned_images = []
     for image_name in tqdm(images_names):
         try:
-            aligned_image = align_face(filepath=f'{raw_images_path}/{image_name}',
-                                       predictor=predictor, output_size=IMAGE_SIZE)
+            aligned_image = align_data(filepath=f'{raw_images_path}/{image_name}', output_size=IMAGE_SIZE)
             aligned_images.append(aligned_image)
         except Exception as e:
             print(e)
