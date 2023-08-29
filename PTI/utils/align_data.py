@@ -1,5 +1,5 @@
 import sys
-sys.path.append('.')
+sys.path.append('..')
 from configs import paths_config
 import dlib
 import glob
