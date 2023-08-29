@@ -15,9 +15,9 @@ def align_data(filepath, output_size):
     :return: PIL Image
     """
     # read image
-    print(filepath)
-    img = PIL.Image.open(filepath)
-
+    # print(filepath)
+    # img = PIL.Image.open(filepath)
+    img = filepath
     # Transform.
     img = img.resize((output_size, output_size), PIL.Image.ANTIALIAS)
 
