@@ -5,6 +5,8 @@ import dlib
 import glob
 import os
 from tqdm import tqdm
+import PIL
+import PIL.Image
 # from utils.alignment import align_face
 
 def align_data(filepath, output_size):
