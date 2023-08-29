@@ -1,6 +1,6 @@
 import sys
-sys.path.append('..')
-from configs import paths_config
+sys.path.append('.')
+from PTI.configs import paths_config
 import dlib
 import glob
 import os
