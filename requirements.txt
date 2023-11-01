@@ -11,3 +11,4 @@ pillow>=9.4.0
 torchvision>=0.15.2
 imageio>=2.9.0
 lpips==0.1.4
+wandb==0.15.10
