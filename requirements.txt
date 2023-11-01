@@ -1,5 +1,3 @@
-torch
-torchvision
 Ninja
 gradio
 huggingface_hub
